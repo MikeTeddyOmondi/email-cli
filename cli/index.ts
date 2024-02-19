@@ -1,8 +1,8 @@
 import { setTimeout } from "node:timers/promises";
-import * as p from "@clack/prompts";
-import color from "picocolors";
 import amqp from "amqplib/callback_api";
+import * as p from "@clack/prompts";
 import { Workbook } from "exceljs";
+import color from "picocolors";
 
 async function main() {
   console.clear();
