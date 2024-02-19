@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  smtp:
+    container_name: smtp-service
+    image: ranckosolutionsinc/smtp-service:v1.0
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 3300:3300
+    environment:
+      - PORT=${PORT}
+      - NODE_ENV=${NODE_ENV}
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - RABBITMQ_LOCAL_URL=${RABBITMQ_LOCAL_URL}
+      - RABBITMQ_REMOTE_URL=${RABBITMQ_REMOTE_URL}
+    networks:
+      - smtp-service-network
+
+networks:
+  smtp-service-network:
+    name: smtp-service
+    driver: bridge

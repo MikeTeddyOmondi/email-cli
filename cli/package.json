@@ -1,0 +1,64 @@
+{
+  "name": "email-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.cjs",
+  "type": "module",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/natemoo-re/clack",
+    "directory": "packages/prompts"
+  },
+  "bugs": {
+    "url": "https://github.com/natemoo-re/clack/issues"
+  },
+  "homepage": "https://github.com/natemoo-re/clack/tree/main/packages/prompts#readme",
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "author": {
+    "name": "MikeTeddyOmondi",
+    "email": "mike_omondi@outlook.com",
+    "url": "https://miketeddyomondi.dev"
+  },
+  "license": "MIT",
+  "keywords": [
+    "cli",
+    "command-line",
+    "command",
+    "input",
+    "interact",
+    "interface",
+    "menu",
+    "prompt",
+    "prompts",
+    "stdin"
+  ],
+  "packageManager": "pnpm@8.6.12",
+  "scripts": {
+    "start": "tsx index.ts"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.7.0",
+    "amqplib": "^0.10.3",
+    "exceljs": "^4.4.0",
+    "picocolors": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.10.4",
+    "@types/node": "^20.11.19",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
+  }
+}
