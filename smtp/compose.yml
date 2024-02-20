@@ -13,6 +13,7 @@ services:
     environment:
       - PORT=${PORT}
       - NODE_ENV=${NODE_ENV}
+      - EMAIL_SENDER=${EMAIL_SENDER}
       - RESEND_API_KEY=${RESEND_API_KEY}
       - RABBITMQ_LOCAL_URL=${RABBITMQ_LOCAL_URL}
       - RABBITMQ_REMOTE_URL=${RABBITMQ_REMOTE_URL}

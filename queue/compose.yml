@@ -19,3 +19,4 @@ networks:
   smtp-service-network:
     name: smtp-service
     driver: bridge
+    external: true

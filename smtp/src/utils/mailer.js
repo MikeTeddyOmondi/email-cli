@@ -2,31 +2,27 @@ const path = require("path");
 const nodemailer = require("nodemailer");
 const hbs = require("nodemailer-express-handlebars");
 
-const {
-  ACC_TKN,
-  RFR_TKN,
-  CLIENT_ID,
-  EMAIL_SENDER,
-  CLIENT_SECRET,
-} = require("../config");
+const { EMAIL_SENDER, RESEND_API_KEY } = require("../config");
 
 function capitalize(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
 async function sendMail(data) {
+  if (EMAIL_SENDER === undefined || RESEND_API_KEY === undefined) {
+    console.log("[!] Config Error!");
+    throw new Error("[!] Config Error!");
+    // return;
+  }
+
   // Transporter instance
   const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
+    host: "smtp.resend.com",
     secure: true,
+    port: 587,
     auth: {
-      type: "OAuth2",
-      user: EMAIL_SENDER,
-      clientId: CLIENT_ID,
-      clientSecret: CLIENT_SECRET,
-      refreshToken: RFR_TKN,
-      accessToken: ACC_TKN,
+      user: "resend",
+      pass: RESEND_API_KEY,
     },
   });
 
@@ -47,10 +43,10 @@ async function sendMail(data) {
   const mailOptions = {
     from: EMAIL_SENDER,
     to: data.email,
-    subject: "Authentication | Registration Email 📩",
+    subject: "CLI Email 📩",
     template: "email",
     context: {
-      title: "Registration Successful ✔",
+      title: "Successful sent email ✔",
       username: capitalize(data.username),
       url: data.url,
     },
@@ -58,9 +54,9 @@ async function sendMail(data) {
 
   try {
     const info = await transporter.sendMail(mailOptions);
-    console.log(`> Email sent: ${info.response}`);
+    console.log(`[#] Email sent: ${info.response}`);
   } catch (err) {
-    console.log(`> Error occurred while sending email: ${err}`);
+    console.log(`[!] Error occurred while sending email: ${err}`);
   }
 }
 

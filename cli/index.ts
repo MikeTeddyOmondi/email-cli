@@ -148,3 +148,10 @@ main().catch(console.error);
 //   .catch((error) => {
 //     console.error("Error reading Excel file:", error);
 //   });
+
+
+// const data = {
+//   username: otherData.username,
+//   email: otherData.email,
+//   url: `${CLIENT_URL}/api/v1/account/activate/${token}`,
+// };
